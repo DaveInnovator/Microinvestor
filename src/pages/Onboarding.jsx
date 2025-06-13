@@ -199,13 +199,13 @@ export default function Onboarding() {
                 <div className="flex gap-4 justify-center">
                   <button
                     onClick={handleBack}
-                    className="px-6 py-2 bg-gray-700 rounded hover:bg-gray-600"
+                    className="px-6 py-2 bg-gray-700 rounded hover:bg-gray-600 cursor-pointer"
                   >
                     Back
                   </button>
                   <button
                     onClick={downloadPDF}
-                    className="px-6 py-2 bg-green-500 rounded hover:bg-green-600"
+                    className="px-6 py-2 bg-green-500 rounded hover:bg-green-600 cursor-pointer"
                   >
                     Save as PDF
                   </button>

@@ -32,7 +32,7 @@ export default function Navbar() {
 
             {/* Mobile menu toggle */}
             <button
-              className="md:hidden focus:outline-none"
+              className="md:hidden focus:outline-none cursor-pointer"
               onClick={toggleMenu}
               aria-label="Toggle Menu"
             >

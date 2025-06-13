@@ -71,10 +71,7 @@ export default function Dashboard() {
       </a>
     </div>
   )
-<<<<<<< HEAD
-=======
 
->>>>>>> cb61804b34531d10b9710e4d3bda7884c0706e5e
 
   return (
     <div className="min-h-screen bg-gray-950 text-white p-6 space-y-6">
@@ -108,12 +105,12 @@ export default function Dashboard() {
         <div className="flex gap-4">
           <button
             onClick={downloadPDF}
-            className="bg-green-600 px-4 py-2 rounded hover:bg-green-700"
+            className="bg-green-600 px-4 py-2 rounded hover:bg-green-700 cursor-pointer"
           >
             Download PDF
           </button>
           <button
-            className="bg-gray-700 px-4 py-2 rounded hover:bg-gray-600"
+            className="bg-gray-700 px-4 py-2 rounded hover:bg-gray-600 cursor-pointer"
             onClick={() => {
               localStorage.clear()
               window.location.href = '/'
