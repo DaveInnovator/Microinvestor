@@ -1,12 +1,26 @@
-# React + Vite
+# 💸 MicroInvestor
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+**AI-powered micro-investment planner built with React, Tailwind, and pure vibes.**  
+Helps everyday Nigerians (and beyond) create a personalized investment plan based on their income, goals, and risk tolerance—with charts, summaries, and PDF exports.
 
-Currently, two official plugins are available:
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Babel](https://babeljs.io/) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+---
 
-## Expanding the ESLint configuration
+## 🚀 Features
 
-If you are developing a production application, we recommend using TypeScript with type-aware lint rules enabled. Check out the [TS template](https://github.com/vitejs/vite/tree/main/packages/create-vite/template-react-ts) for information on how to integrate TypeScript and [`typescript-eslint`](https://typescript-eslint.io) in your project.
+- 📊 **AI-Powered Investment Advice** – Get smart suggestions using OpenAI or Hugging Face.
+- 📈 **Interactive Dashboard** – Visual breakdowns of your allocations (index funds, crypto, emergency fund).
+- 🧾 **Export to PDF** – Save your investment plan for later (or bragging rights).
+- ⚙️ **Local Data Persistence** – Saves your data in `localStorage` like a real MVP.
+- 🎨 **Dark Mode Vibes** – Tailored for night owls and clean UI lovers.
+
+---
+
+## 🛠️ Tech Stack
+
+- ⚛️ React + Vite
+- 💨 Tailwind CSS
+- 🎞️ Framer Motion
+- 🧠 OpenAI / Hugging Face API
+- 📄 pdfMake
+- 🖼️ html2canvas (for chart export)
