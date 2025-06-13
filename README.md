@@ -3,7 +3,7 @@
 **AI-powered micro-investment planner built with React, Tailwind, and pure vibes.**  
 Helps everyday Nigerians (and beyond) create a personalized investment plan based on their income, goals, and risk tolerance—with charts, summaries, and PDF exports.
 
-
+![MicroInvestor Screenshot](./public/preview.png)
 ---
 
 ## 🚀 Features
