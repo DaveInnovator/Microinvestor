@@ -47,8 +47,6 @@ export default function Onboarding() {
         formData.risk
       )
       setAdvice(result)
-
-      // Save data to localStorage for dashboard
       localStorage.setItem('microInvestorFormData', JSON.stringify(formData))
       localStorage.setItem('microInvestorAdvice', result)
     } catch (err) {
@@ -95,11 +93,17 @@ export default function Onboarding() {
               className="w-full px-4 py-2 rounded bg-gray-800 text-white outline-none focus:ring-2 ring-green-400"
               value={formData.income}
               onChange={handleChange('income')}
+              required
             />
             <div className="flex gap-4 mt-4">
               <button
+                disabled={!formData.income || parseFloat(formData.income) <= 0}
                 onClick={handleNext}
-                className="px-6 py-2 bg-green-500 rounded hover:bg-green-600"
+                className={`px-6 py-2 rounded ${
+                  !formData.income || parseFloat(formData.income) <= 0
+                    ? 'bg-gray-600 cursor-not-allowed'
+                    : 'bg-green-500 hover:bg-green-600'
+                }`}
               >
                 Next
               </button>
@@ -113,6 +117,7 @@ export default function Onboarding() {
               value={formData.goal}
               onChange={handleChange('goal')}
               className="w-full px-4 py-2 rounded bg-gray-800 text-white outline-none focus:ring-2 ring-green-400"
+              required
             >
               <option value="">Select goal</option>
               <option value="save">Save for emergency</option>
@@ -128,8 +133,13 @@ export default function Onboarding() {
                 Back
               </button>
               <button
+                disabled={!formData.goal}
                 onClick={handleNext}
-                className="px-6 py-2 bg-green-500 rounded hover:bg-green-600"
+                className={`px-6 py-2 rounded ${
+                  !formData.goal
+                    ? 'bg-gray-600 cursor-not-allowed'
+                    : 'bg-green-500 hover:bg-green-600'
+                }`}
               >
                 Next
               </button>

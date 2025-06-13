@@ -71,6 +71,10 @@ export default function Dashboard() {
       </a>
     </div>
   )
+<<<<<<< HEAD
+=======
+
+>>>>>>> cb61804b34531d10b9710e4d3bda7884c0706e5e
 
   return (
     <div className="min-h-screen bg-gray-950 text-white p-6 space-y-6">

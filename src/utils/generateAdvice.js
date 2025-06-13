@@ -7,7 +7,7 @@ export async function generateInvestmentAdvice(income, goal, risk) {
 - Goal: ${goal}
 - Risk: ${risk}
 
-Give a short personalized investment advice.`
+Give a short personalized investment advice with advice on stocks and crypto they can buy and how they can generate more with it .`
 
   // Try Hugging Face first
   try {
