@@ -57,7 +57,21 @@ export default function Dashboard() {
   }
 
   if (!formData)
-    return <div className="text-white p-8">Loading Dashboard...</div>
+  return (
+    <div className="min-h-screen flex flex-col items-center justify-center bg-gray-950 text-white p-6 text-center">
+      <h1 className="text-3xl font-bold mb-4">🚫 No Investment Data Found</h1>
+      <p className="text-gray-400 mb-6">
+        Looks like you haven’t filled out the investment assessment yet.
+      </p>
+      <a
+        href="/onboarding"
+        className="px-6 py-3 bg-green-500 text-white rounded hover:bg-green-600 transition"
+      >
+        🧠 Take Assessment Now
+      </a>
+    </div>
+  )
+
 
   return (
     <div className="min-h-screen bg-gray-950 text-white p-6 space-y-6">
