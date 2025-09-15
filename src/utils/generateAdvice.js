@@ -1,13 +1,13 @@
 export async function generateInvestmentAdvice(income, goal, risk) {
-  const hfToken = import.meta.env.VITE_HF_API_TOKEN
-  const openaiKey = import.meta.env.VITE_OPENAI_API_KEY
+  const hfToken = import.meta.env.VITE_HF_API_TOKEN;
+  const groqKey = import.meta.env.VITE_GROQ_API_KEY;
 
   const prompt = `I'm a financial advisor AI. The user's info:\n
 - Income: ₦${income}
 - Goal: ${goal}
 - Risk: ${risk}
 
-Give a short personalized investment advice with advice on stocks and crypto they can buy and how they can generate more with it .`
+Give a short personalized investment advice with advice on stocks and crypto they can buy and how they can generate more with it.`
 
   // Try Hugging Face first
   try {
@@ -21,27 +21,27 @@ Give a short personalized investment advice with advice on stocks and crypto the
         },
         body: JSON.stringify({ inputs: prompt }),
       }
-    )
+    );
 
-    if (!hfRes.ok) throw new Error("Hugging Face failed")
+    if (!hfRes.ok) throw new Error("Hugging Face failed");
 
-    const result = await hfRes.json()
-    if (result.error) throw new Error(result.error)
+    const result = await hfRes.json();
+    if (result.error) throw new Error(result.error);
 
-    return result[0]?.generated_text || "AI couldn't generate advice."
+    return result[0]?.generated_text || "AI couldn't generate advice.";
   } catch (hfErr) {
-    console.warn("Hugging Face failed:", hfErr.message)
+    console.warn("Hugging Face failed:", hfErr.message);
 
-    // Fallback to OpenAI
+    // Fallback to Groq
     try {
-      const openaiRes = await fetch("https://api.openai.com/v1/chat/completions", {
+      const res = await fetch("https://api.groq.com/openai/v1/chat/completions", {
         method: "POST",
         headers: {
-          Authorization: `Bearer ${openaiKey}`,
+          Authorization: `Bearer ${groqKey}`,
           "Content-Type": "application/json",
         },
         body: JSON.stringify({
-          model: "gpt-3.5-turbo",
+          model: "llama-3.1-8b-instant",
           messages: [
             {
               role: "system",
@@ -52,17 +52,18 @@ Give a short personalized investment advice with advice on stocks and crypto the
               content: prompt,
             },
           ],
-          max_tokens: 150,
+          temperature: 0.7,
+          max_tokens: 4000,
         }),
-      })
+      });
 
-      if (!openaiRes.ok) throw new Error("OpenAI failed")
+      if (!res.ok) throw new Error("Groq API failed");
 
-      const result = await openaiRes.json()
-      return result.choices?.[0]?.message?.content || "No advice generated."
-    } catch (openaiErr) {
-      console.error("OpenAI fallback failed:", openaiErr.message)
-      return "AI is sleeping. Try again later."
+      const data = await res.json();
+      return data.choices?.[0]?.message?.content.trim() || "AI is sleeping.";
+    } catch (groqErr) {
+      console.error("Groq failed:", groqErr.message);
+      return "Both Hugging Face and Groq failed. Try again later.";
     }
   }
 }
